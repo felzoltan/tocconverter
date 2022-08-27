@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -45,12 +47,22 @@ public class TOCCController {
         ConverterFromArabicToRoman a2rConverter = new ConverterFromArabicToRoman();
         ConverterFromRomanToArabic r2aConverter = new ConverterFromRomanToArabic();
         StringBuilder sb = new StringBuilder();
+        Map<String, String> cache = new HashMap<>(12);
         input.lines().forEach(line -> {
             if (!sb.isEmpty()) {
                 sb.append("\n");
             }
             String newLine = Arrays.stream(line.split("[.]"))
-                .map(elem -> a2r ? a2rConverter.convert(elem) : r2aConverter.convert(elem))
+                .map(elem -> {
+                    String changeValue;
+                    if (cache.containsKey(elem)) {
+                        changeValue = cache.get(elem);
+                    } else {
+                        changeValue = a2r ? a2rConverter.convert(elem) : r2aConverter.convert(elem);
+                        cache.put(elem, changeValue);
+                    }
+                    return changeValue;
+                })
                 .collect(Collectors.joining("."));
             sb.append(newLine);
             if (line.endsWith(".")) {
