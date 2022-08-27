@@ -9,7 +9,7 @@ public class ConverterFromArabicToRoman {
     private final char[] tens = {'X', 'C', 'M'};
 
     public String convert(String arabicNumber) {
-        InputInverseSplitter splitter = new InputInverseSplitter(arabicNumber);
+        InputInverseSplitter splitter = new InputInverseSplitter(arabicNumber.trim());
         char actChar = splitter.getNextChar();
         int position = 0;
         int actValue = 0;

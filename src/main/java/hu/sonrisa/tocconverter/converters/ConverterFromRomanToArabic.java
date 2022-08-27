@@ -5,7 +5,7 @@ import hu.sonrisa.tocconverter.BusinesException;
 public class ConverterFromRomanToArabic {
 
     public String convert(String romanNumber) {
-        InputSplitter splitter = new InputSplitter(romanNumber.toUpperCase());
+        InputSplitter splitter = new InputSplitter(romanNumber.trim().toUpperCase());
         char actChar = splitter.getNextChar();
         int value = 0;
         char prevChar = 0;
