@@ -3,13 +3,11 @@ package hu.sonrisa.tocconverter.converters;
 import hu.sonrisa.tocconverter.BusinesException;
 
 public class ConverterFromRomanToArabic {
-    private InputSplitter splitter;
-    private char actChar;
 
     public String convert(String romanNumber) {
-        splitter = new InputSplitter(romanNumber.toUpperCase());
+        InputSplitter splitter = new InputSplitter(romanNumber.toUpperCase());
+        char actChar = splitter.getNextChar();
         int value = 0;
-        getNextChar();
         char prevChar = 0;
         while (actChar != 0) {
             switch (actChar) {
@@ -62,12 +60,9 @@ public class ConverterFromRomanToArabic {
                     throw new BusinesException(1, "Wrong roman number. Pos:" + splitter.getLastPosition() + 1);
             }
             prevChar = actChar;
-            getNextChar();
+            actChar = splitter.getNextChar();
         }
         return String.format("%d", value);
     }
 
-    private void getNextChar() {
-        actChar = splitter.getNextChar();
-    }
 }
