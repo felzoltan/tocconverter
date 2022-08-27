@@ -1,5 +1,7 @@
 package hu.sonrisa.tocconverter.converters;
 
+import hu.sonrisa.tocconverter.BusinesException;
+
 public class ConverterFromRomanToArabic {
     private InputSplitter splitter;
     private char actChar;
@@ -56,6 +58,8 @@ public class ConverterFromRomanToArabic {
                 case 'I':
                     value++;
                     break;
+                default:
+                    throw new BusinesException(1, "Wrong roman number. Pos:" + splitter.getLastPosition() + 1);
             }
             prevChar = actChar;
             getNextChar();

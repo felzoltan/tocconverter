@@ -1,8 +1,10 @@
 package hu.sonrisa.tocconverter.converters;
 
+import hu.sonrisa.tocconverter.BusinesException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ConverterFromRomanToArabicTest {
 
@@ -31,5 +33,10 @@ class ConverterFromRomanToArabicTest {
         assertEquals("90", converter.convert("XC"));
         assertEquals("100", converter.convert("C"));
         assertEquals("201", converter.convert("CCI"));
+    }
+
+    @Test
+    void convertWrongInput() {
+        assertThrows(BusinesException.class, () -> converter.convert("CCIY"), "Wrong roman number. Pos:4");
     }
 }

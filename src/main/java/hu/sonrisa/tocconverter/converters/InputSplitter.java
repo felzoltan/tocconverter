@@ -14,4 +14,11 @@ public class InputSplitter {
         }
         return input[position++];
     }
+
+    public int getLastPosition() {
+        if (position == 0) {
+            return 0;
+        }
+        return position - 1;
+    }
 }
