@@ -11,6 +11,23 @@ public class ConverterFromRomanToArabic {
         char prevChar = 0;
         while (actChar != 0) {
             switch (actChar) {
+                case 'I':
+                    value++;
+                    break;
+                case 'V':
+                    if (prevChar == 'I') {
+                        value += 3;
+                    } else {
+                        value += 5;
+                    }
+                    break;
+                case 'X':
+                    if (prevChar == 'I') {
+                        value += 8;
+                    } else {
+                        value += 10;
+                    }
+                    break;
                 case 'M':
                     if (prevChar == 'C') {
                         value += 800;
@@ -38,23 +55,6 @@ public class ConverterFromRomanToArabic {
                     } else {
                         value += 50;
                     }
-                    break;
-                case 'X':
-                    if (prevChar == 'I') {
-                        value += 8;
-                    } else {
-                        value += 10;
-                    }
-                    break;
-                case 'V':
-                    if (prevChar == 'I') {
-                        value += 3;
-                    } else {
-                        value += 5;
-                    }
-                    break;
-                case 'I':
-                    value++;
                     break;
                 default:
                     throw new BusinesException(1, "Wrong roman number. Pos:" + splitter.getLastPosition() + 1);
