@@ -1,4 +1,4 @@
-package hu.sonrisa.tocconverter;
+package hu.sonrisa.tocconverter.rawtextinput;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;

@@ -1,5 +1,6 @@
-package hu.sonrisa.tocconverter;
+package hu.sonrisa.tocconverter.rawtextinput;
 
+import hu.sonrisa.tocconverter.BusinesException;
 import hu.sonrisa.tocconverter.converters.Converter;
 
 import java.util.Arrays;

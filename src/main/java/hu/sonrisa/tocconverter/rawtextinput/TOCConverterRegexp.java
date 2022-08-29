@@ -1,4 +1,4 @@
-package hu.sonrisa.tocconverter;
+package hu.sonrisa.tocconverter.rawtextinput;
 
 import hu.sonrisa.tocconverter.converters.ConverterFromArabicToRoman;
 import hu.sonrisa.tocconverter.converters.ConverterFromRomanToArabic;
