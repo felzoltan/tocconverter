@@ -12,7 +12,6 @@ public class ConverterFromArabicToRoman {
         InputInverseSplitter splitter = new InputInverseSplitter(arabicNumber.trim());
         char actChar = splitter.getNextChar();
         int position = 0;
-        int actValue = 0;
         StringBuilder result = new StringBuilder();
         while (actChar != 0) {
             switch (actChar) {
@@ -52,7 +51,7 @@ public class ConverterFromArabicToRoman {
                     result.append(ones[position].subSequence(0, 1));
                     break;
                 default:
-                    throw new BusinesException(1, "Wrong arabic number. Pos:" + splitter.getLastPosition() + 1);
+                    throw new BusinesException(1, "Wrong arabic number:'" + arabicNumber + "'");
             }
             actChar = splitter.getNextChar();
             position++;

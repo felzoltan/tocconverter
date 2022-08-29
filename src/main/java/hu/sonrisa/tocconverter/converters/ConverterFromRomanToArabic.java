@@ -57,7 +57,7 @@ public class ConverterFromRomanToArabic {
                     }
                     break;
                 default:
-                    throw new BusinesException(1, "Wrong roman number. Pos:" + splitter.getLastPosition() + 1);
+                    throw new BusinesException(1, "Wrong roman number: '" + romanNumber + "'");
             }
             prevChar = actChar;
             actChar = splitter.getNextChar();

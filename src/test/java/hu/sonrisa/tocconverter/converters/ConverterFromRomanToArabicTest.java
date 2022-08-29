@@ -10,7 +10,6 @@ class ConverterFromRomanToArabicTest {
 
     ConverterFromRomanToArabic converter = new ConverterFromRomanToArabic();
 
-
     @Test
     void convert() {
         assertEquals("1", converter.convert("I"));
@@ -37,6 +36,7 @@ class ConverterFromRomanToArabicTest {
 
     @Test
     void convertWrongInput() {
-        assertThrows(BusinesException.class, () -> converter.convert("CCIY"), "Wrong roman number. Pos:4");
+        BusinesException ex = assertThrows(BusinesException.class, () -> converter.convert("CCIY"));
+        assertEquals("Wrong roman number: 'CCIY'", ex.getMessage());
     }
 }

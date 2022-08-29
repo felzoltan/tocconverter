@@ -35,6 +35,7 @@ class ConverterFromArabicToRomanTest {
 
     @Test
     void convertWrongInput() {
-        assertThrows(BusinesException.class, () -> converter.convert("11Y22"), "Wrong arabic number. Pos:3");
+        BusinesException ex = assertThrows(BusinesException.class, () -> converter.convert("11Y22"));
+        assertEquals("Wrong arabic number:'11Y22'", ex.getMessage());
     }
 }
