@@ -12,9 +12,9 @@ import java.util.List;
 @EqualsAndHashCode
 @NoArgsConstructor
 public class TOCItem {
-    @JsonProperty("title")
+    @JsonProperty("t")
     public String title;
-    @JsonProperty("subtitles")
+    @JsonProperty("s")
     public List<TOCItem> subTitles;
 
     public TOCItem(String title) {
