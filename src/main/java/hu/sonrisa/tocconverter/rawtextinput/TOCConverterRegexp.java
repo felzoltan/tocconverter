@@ -1,10 +1,10 @@
 package hu.sonrisa.tocconverter.rawtextinput;
 
-import hu.sonrisa.tocconverter.converters.ConverterFromArabicToRoman;
-import hu.sonrisa.tocconverter.converters.ConverterFromRomanToArabic;
+import hu.sonrisa.tocconverter.converters.ConverterMain;
 
-import java.util.regex.Matcher;
+import java.util.*;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class TOCConverterRegexp {
     public static String convert(String p_input) {
@@ -14,16 +14,25 @@ public class TOCConverterRegexp {
             return "";
         }
         boolean a2r = Character.isDigit(input.charAt(0));
-//        Pattern pattern = Pattern.compile(".*([0-9]+).*");
-        Pattern pattern = Pattern.compile("\\D*(\\d+)\\D*");
-        Matcher matcher = pattern.matcher(input);
-        ConverterFromArabicToRoman a2rConverter = new ConverterFromArabicToRoman();
-        ConverterFromRomanToArabic r2aConverter = new ConverterFromRomanToArabic();
-        if (matcher.matches()) {
-            for (int i = 0; i < matcher.groupCount(); i++) {
-                String group = matcher.group(i);
-                input.replace(group, a2r ? a2rConverter.convert(group) : r2aConverter.convert(group));
+//        Pattern pattern = Pattern.compile("^[0-9]*([0-9]+)^[0-9]*");
+//        Pattern pattern = Pattern.compile("[^.]*([1]+)[$.]*");
+//        Pattern pattern = Pattern.compile("[^\\D]*(\\d+)[$\\D]*", Pattern.MULTILINE | Pattern.UNICODE_CHARACTER_CLASS);
+        Pattern pattern = Pattern.compile("[\\r\\n\\s[.]]");
+        //Matcher matcher = pattern.matcher(input);
+        String[] numbers = pattern.split(input);
+        Map<String, String> replace = new HashMap<>();
+        ConverterMain converter = new ConverterMain();
+        Arrays.stream(numbers).filter(item -> item != null && item.compareTo("") > 0).forEach(item -> {
+            if (!replace.containsKey(item)) {
+                replace.put(item, converter.getConvertedValue(item));
             }
+        });
+        LinkedList<String> orderedReplaceStrings = replace.keySet().stream()
+            .sorted(String::compareTo)
+            .sorted(Comparator.reverseOrder())
+            .collect(Collectors.toCollection(LinkedList<String>::new));
+        for (String item : orderedReplaceStrings) {
+            input = input.replaceAll(item, replace.get(item));
         }
         return input;
     }

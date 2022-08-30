@@ -1,12 +1,12 @@
 package hu.sonrisa.tocconverter.jsoninput;
 
-import hu.sonrisa.tocconverter.converters.Converter;
+import hu.sonrisa.tocconverter.converters.ConverterMain;
 
 import java.util.List;
 
 public class TOCConverterJson {
     private int lineNumber = 0;
-    private Converter converter = new Converter();
+    private ConverterMain converter = new ConverterMain();
 
     public void convert(List<TOCItem> input) {
         convertTOCSubTree(input);

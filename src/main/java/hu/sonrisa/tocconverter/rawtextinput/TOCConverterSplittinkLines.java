@@ -1,7 +1,7 @@
 package hu.sonrisa.tocconverter.rawtextinput;
 
 import hu.sonrisa.tocconverter.BusinesException;
-import hu.sonrisa.tocconverter.converters.Converter;
+import hu.sonrisa.tocconverter.converters.ConverterMain;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
@@ -15,7 +15,7 @@ public class TOCConverterSplittinkLines {
         if (input.length() == 0) {
             return "";
         }
-        Converter converter = new Converter();
+        ConverterMain converter = new ConverterMain();
         StringBuilder sb = new StringBuilder();
         input.lines().forEach(line -> {
             lineNumber++;

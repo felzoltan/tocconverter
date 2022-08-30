@@ -2,6 +2,7 @@ package hu.sonrisa.tocconverter;
 
 import hu.sonrisa.tocconverter.jsoninput.TOCConverterJson;
 import hu.sonrisa.tocconverter.jsoninput.TOCItem;
+import hu.sonrisa.tocconverter.rawtextinput.TOCConverterRegexp;
 import hu.sonrisa.tocconverter.rawtextinput.TOCConverterSplittinkLines;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,6 +16,16 @@ public class TocconverterController {
     @PostMapping("/tocconvert")
     public String convertTOC(@RequestBody String p_input) {
         TOCConverterSplittinkLines converter = new TOCConverterSplittinkLines();
+        try {
+            return converter.convert(p_input);
+        } catch (BusinesException ex) {
+            return ex.getMessage();
+        }
+    }
+
+    @PostMapping("/tocconvertregexp")
+    public String convertTOCRegexp(@RequestBody String p_input) {
+        TOCConverterRegexp converter = new TOCConverterRegexp();
         try {
             return converter.convert(p_input);
         } catch (BusinesException ex) {

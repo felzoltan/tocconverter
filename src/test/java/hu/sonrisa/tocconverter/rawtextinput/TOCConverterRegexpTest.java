@@ -1,13 +1,12 @@
 package hu.sonrisa.tocconverter.rawtextinput;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TOCConverterRegexpTest {
 
-    @Disabled("There is a chance to repair it")
+    //@Disabled("There is a chance to repair it")
     @Test
     void convertInputWithRegexp() {
         String input = """
@@ -33,12 +32,11 @@ class TOCConverterRegexpTest {
         assertEquals(result, TOCConverterRegexp.convert(input));
     }
 
-    @Disabled("There is a chance to repair it")
+    //@Disabled("There is a chance to repair it")
     @Test
     void convertInputWithRegexpOneLine() {
         String input = "1.1.";
         String result = "I.I.";
         assertEquals(result, TOCConverterRegexp.convert(input));
     }
-
 }

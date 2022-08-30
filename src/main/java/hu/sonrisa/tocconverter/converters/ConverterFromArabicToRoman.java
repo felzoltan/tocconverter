@@ -2,13 +2,14 @@ package hu.sonrisa.tocconverter.converters;
 
 import hu.sonrisa.tocconverter.BusinesException;
 
-public class ConverterFromArabicToRoman {
+public class ConverterFromArabicToRoman implements Converter {
 
     private final InputInverseSplitter splitter = new InputInverseSplitter();
     private final CharSequence[] ones = {"III", "XXX", "CCC", "MMM"};
     private final char[] fives = {'V', 'L', 'D'};
     private final char[] tens = {'X', 'C', 'M'};
 
+    @Override
     public String convert(String arabicNumber) {
         splitter.setInput(arabicNumber.trim());
         char actChar = splitter.getNextChar();

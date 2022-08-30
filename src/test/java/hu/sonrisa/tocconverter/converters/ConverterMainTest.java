@@ -6,11 +6,11 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class ConverterTest {
+class ConverterMainTest {
 
     @Test
     void getConvertedValueArabicToRoman() {
-        Converter converter = new Converter();
+        ConverterMain converter = new ConverterMain();
         assertEquals("I", converter.getConvertedValue("1"));
         assertEquals("I", converter.getConvertedValue("1"));
         assertEquals("II", converter.getConvertedValue("2"));
@@ -37,18 +37,18 @@ class ConverterTest {
 
     @Test
     void getConvertedValueArabicToRomanError() {
-        Converter conv = new Converter();
+        ConverterMain conv = new ConverterMain();
         BusinesException ex = assertThrows(BusinesException.class, () -> conv.getConvertedValue("11x"));
         assertEquals("Wrong arabic number:'11x'", ex.getMessage());
     }
 
     @Test
     void getConvertedValue_ChangeDirectionError() {
-        Converter conv = new Converter();
+        ConverterMain conv = new ConverterMain();
         assertEquals("XI", conv.getConvertedValue("11"));
         BusinesException ex = assertThrows(BusinesException.class, () -> conv.getConvertedValue("X"));
         assertEquals("Wrong arabic number:'X'", ex.getMessage());
-        Converter conv2 = new Converter();
+        ConverterMain conv2 = new ConverterMain();
         assertEquals("10", conv2.getConvertedValue("X"));
         ex = assertThrows(BusinesException.class, () -> conv2.getConvertedValue("11"));
         assertEquals("Wrong roman number: '11'", ex.getMessage());
@@ -56,7 +56,7 @@ class ConverterTest {
 
     @Test
     void getConvertedValueRomanToArabic() {
-        Converter converter = new Converter();
+        ConverterMain converter = new ConverterMain();
         assertEquals("1", converter.getConvertedValue("I"));
         assertEquals("2", converter.getConvertedValue("II"));
         assertEquals("3", converter.getConvertedValue("III"));
@@ -82,7 +82,7 @@ class ConverterTest {
 
     @Test
     void getConvertedValueRomanToArabicError() {
-        Converter conv = new Converter();
+        ConverterMain conv = new ConverterMain();
         BusinesException ex = assertThrows(BusinesException.class, () -> conv.getConvertedValue("II-"));
         assertEquals("Wrong roman number: 'II-'", ex.getMessage());
     }

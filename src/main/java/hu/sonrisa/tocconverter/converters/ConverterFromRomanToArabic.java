@@ -2,7 +2,7 @@ package hu.sonrisa.tocconverter.converters;
 
 import hu.sonrisa.tocconverter.BusinesException;
 
-public class ConverterFromRomanToArabic {
+public class ConverterFromRomanToArabic implements Converter {
     private final InputSplitter splitter = new InputSplitter();
 
     public String convert(String romanNumber) {
