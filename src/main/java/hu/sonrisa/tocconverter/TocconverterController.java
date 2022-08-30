@@ -25,7 +25,7 @@ public class TocconverterController {
     @PostMapping("/tocconvertjson")
     public JsonTOCResult convertTOCJson(@RequestBody List<TOCItem> p_input) {
         try {
-            TOCConverterJson.convert(p_input);
+            new TOCConverterJson().convert(p_input);
             return new JsonTOCResult("", p_input);
         } catch (BusinesException ex) {
             return new JsonTOCResult(ex.getMessage(), null);

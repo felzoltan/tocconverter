@@ -5,24 +5,20 @@ import hu.sonrisa.tocconverter.converters.Converter;
 import java.util.List;
 
 public class TOCConverterJson {
+    private int lineNumber = 0;
     private Converter converter = new Converter();
 
-    public static void convert(List<TOCItem> input) {
-        input.parallelStream().forEach(item -> {
-            new TOCConverterJson().convertTOCSubTree(item);
-        });
+    public void convert(List<TOCItem> input) {
+        convertTOCSubTree(input);
     }
 
-    private void convertTOCSubTree(TOCItem input) {
+    private void convertTOCSubTree(List<TOCItem> input) {
         if (input == null) {
             return;
         }
-        input.title = converter.getConvertedValue(input.title);
-        if (input.subTitles == null) {
-            return;
-        }
-        input.subTitles.forEach(item -> {
-            convertTOCSubTree(item);
+        input.forEach(item -> {
+            item.title = converter.getConvertedValue(item.title);
+            convertTOCSubTree(item.subTitles);
         });
     }
 }
