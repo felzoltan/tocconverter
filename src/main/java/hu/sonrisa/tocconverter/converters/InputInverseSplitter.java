@@ -20,11 +20,4 @@ public class InputInverseSplitter {
         }
         return input[position--];
     }
-
-    public int getLastPosition() {
-        if (position == maxLength) {
-            return maxLength;
-        }
-        return position + 1;
-    }
 }
