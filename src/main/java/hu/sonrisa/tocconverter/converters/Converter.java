@@ -4,27 +4,32 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Converter {
-    private Map<String, String> cache = new HashMap<>(12);
-    private ConverterFromArabicToRoman a2rConverter = new ConverterFromArabicToRoman();
-    private ConverterFromRomanToArabic r2aConverter = new ConverterFromRomanToArabic();
+    private final Map<String, String> cache = new HashMap<>(12);
+    private final ConverterFromArabicToRoman a2rConverter = new ConverterFromArabicToRoman();
+    private final ConverterFromRomanToArabic r2aConverter = new ConverterFromRomanToArabic();
     private Direction direction = Direction.UNDEF;
+    private String input;
 
     public String getConvertedValue(String p_input) {
-        String input = p_input.trim();
-        // I define the direction from the first char
+        input = p_input.trim();
         if (input.length() == 0) {
             return "";
-        }
-        if (direction == Direction.UNDEF) {
-            direction = Character.isDigit(input.charAt(0)) ? Direction.A2R : Direction.R2A;
         }
         String changeValue;
         changeValue = cache.get(input);
         if (changeValue == null) {
-            changeValue = direction == Direction.A2R ? a2rConverter.convert(input) : r2aConverter.convert(input);
+            changeValue = isDirectionA2R() ? a2rConverter.convert(input) : r2aConverter.convert(input);
             cache.put(input, changeValue);
         }
         return changeValue;
+    }
+
+    private boolean isDirectionA2R() {
+        if (direction == Direction.UNDEF) {
+            // I define the direction from the first char
+            direction = Character.isDigit(input.charAt(0)) ? Direction.A2R : Direction.R2A;
+        }
+        return direction == Direction.A2R;
     }
 
     private enum Direction {UNDEF, A2R, R2A}
