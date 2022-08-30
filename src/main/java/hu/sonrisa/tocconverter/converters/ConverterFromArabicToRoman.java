@@ -4,12 +4,13 @@ import hu.sonrisa.tocconverter.BusinesException;
 
 public class ConverterFromArabicToRoman {
 
+    private final InputInverseSplitter splitter = new InputInverseSplitter();
     private final CharSequence[] ones = {"III", "XXX", "CCC", "MMM"};
     private final char[] fives = {'V', 'L', 'D'};
     private final char[] tens = {'X', 'C', 'M'};
 
     public String convert(String arabicNumber) {
-        InputInverseSplitter splitter = new InputInverseSplitter(arabicNumber.trim());
+        splitter.setInput(arabicNumber.trim());
         char actChar = splitter.getNextChar();
         int position = 0;
         StringBuilder result = new StringBuilder();

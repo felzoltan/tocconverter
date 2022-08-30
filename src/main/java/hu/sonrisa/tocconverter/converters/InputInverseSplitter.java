@@ -1,11 +1,14 @@
 package hu.sonrisa.tocconverter.converters;
 
 public class InputInverseSplitter {
-    private final char[] input;
-    private final int maxLength;
+    private char[] input;
+    private int maxLength;
     private int position;
 
-    public InputInverseSplitter(String input) {
+    public InputInverseSplitter() {
+    }
+
+    public void setInput(String input) {
         this.input = input.toCharArray();
         maxLength = this.input.length - 1;
         position = maxLength;

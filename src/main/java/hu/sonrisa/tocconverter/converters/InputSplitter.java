@@ -1,11 +1,15 @@
 package hu.sonrisa.tocconverter.converters;
 
 public class InputSplitter {
-    private final char[] input;
+    private char[] input;
     private int position = 0;
 
-    public InputSplitter(String input) {
+    public InputSplitter() {
+    }
+
+    public void setInput(String input) {
         this.input = input.toCharArray();
+        position = 0;
     }
 
     public char getNextChar() {
