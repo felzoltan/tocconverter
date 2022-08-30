@@ -36,17 +36,6 @@ class TOCConverterSplittinkLinesTest {
     @Test
     void convertInputWithSplittingLinesWithWhiteSpaces() {
         String input = """
-            1.
-            1.1.
-            1. 2.
-            2.
-            2.1
-            2.1.1 
-            2.1.1.1
-            2.1.1.2
-            3.
-                    """;
-        String result = """
             I.
             I.I.
             I.II.
@@ -56,6 +45,16 @@ class TOCConverterSplittinkLinesTest {
             II.I.I.I
             II.I.I.II
             III.""";
+        String result = """
+            1.
+            1.1.
+            1.2.
+            2.
+            2.1
+            2.1.1 
+            2.1.1.1
+            2.1.1.2
+            3.""";
         assertEquals(result, con.convert(input));
     }
 }
