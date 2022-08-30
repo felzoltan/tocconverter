@@ -34,6 +34,11 @@ class TOCConverterSplittinkLinesTest {
     }
 
     @Test
+    void convertInputWithSplittingLinesEmptyInput() {
+        assertEquals("", con.convert(""));
+    }
+
+    @Test
     void convertInputWithSplittingLinesWithWhiteSpaces() {
         String input = """
             I.

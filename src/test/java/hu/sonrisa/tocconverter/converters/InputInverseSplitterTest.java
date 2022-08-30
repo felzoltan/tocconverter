@@ -23,4 +23,11 @@ class InputInverseSplitterTest {
         assertEquals('P', s.getNextChar());
         assertEquals(0, s.getNextChar());
     }
+
+    @Test
+    void getNextCharEmptyString() {
+        InputInverseSplitter s = new InputInverseSplitter();
+        s.setInput("");
+        assertEquals(0, s.getNextChar());
+    }
 }

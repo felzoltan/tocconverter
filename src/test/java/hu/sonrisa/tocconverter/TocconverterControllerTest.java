@@ -53,6 +53,11 @@ class TocconverterControllerTest {
     }
 
     @Test
+    void convertTOCRawEmptyInput() {
+        assertEquals("", controller.convertTOC(""));
+    }
+
+    @Test
     void convertTOCRawR2A() {
         String input = """
             I.
@@ -161,6 +166,12 @@ class TocconverterControllerTest {
         actItem.addSubTitle(new TOCItem("III"));
         TocconverterController.JsonTOCResult result = controller.convertTOCJson(root);
         assertEquals("Wrong roman number: 'III1'", result.errorText);
+        assertTrue(result.result == null);
+    }
+
+    @Test
+    void convertTOCEmptyInput() {
+        TocconverterController.JsonTOCResult result = controller.convertTOCJson(null);
         assertTrue(result.result == null);
     }
 }

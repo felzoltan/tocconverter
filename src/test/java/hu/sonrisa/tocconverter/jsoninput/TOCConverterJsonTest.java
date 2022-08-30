@@ -31,6 +31,12 @@ class TOCConverterJsonTest {
     }
 
     @Test
+    void convertEmptyInput() {
+        TOCConverterJson conv = new TOCConverterJson();
+        conv.convert(null);
+    }
+
+    @Test
     void convertR2A() {
         TOCConverterJson conv = new TOCConverterJson();
         List<TOCItem> root = new ArrayList<>(3);

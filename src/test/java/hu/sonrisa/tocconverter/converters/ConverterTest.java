@@ -32,6 +32,7 @@ class ConverterTest {
         assertEquals("XC", converter.getConvertedValue("90"));
         assertEquals("C", converter.getConvertedValue("100"));
         assertEquals("CCI", converter.getConvertedValue("201"));
+        assertEquals("", converter.getConvertedValue(""));
     }
 
     @Test
@@ -76,6 +77,7 @@ class ConverterTest {
         assertEquals("90", converter.getConvertedValue("XC"));
         assertEquals("100", converter.getConvertedValue("C"));
         assertEquals("201", converter.getConvertedValue("CCI"));
+        assertEquals("", converter.getConvertedValue(""));
     }
 
     @Test

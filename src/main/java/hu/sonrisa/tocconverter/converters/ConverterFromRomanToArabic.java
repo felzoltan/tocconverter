@@ -63,6 +63,9 @@ public class ConverterFromRomanToArabic {
             prevChar = actChar;
             actChar = splitter.getNextChar();
         }
+        if (prevChar == 0) {
+            return "";
+        }
         return String.format("%d", value);
     }
 

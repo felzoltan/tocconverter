@@ -23,4 +23,11 @@ class InputSplitterTest {
         assertEquals('M', s.getNextChar());
         assertEquals(0, s.getNextChar());
     }
+
+    @Test
+    void getNextCharEmptyString() {
+        InputSplitter s = new InputSplitter();
+        s.setInput("");
+        assertEquals(0, s.getNextChar());
+    }
 }

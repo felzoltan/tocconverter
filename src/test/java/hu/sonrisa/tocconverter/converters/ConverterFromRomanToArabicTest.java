@@ -29,9 +29,10 @@ class ConverterFromRomanToArabicTest {
         assertEquals("60", converter.convert("LX"));
         assertEquals("70", converter.convert("LXX"));
         assertEquals("80", converter.convert("LXXX"));
+        assertEquals("80", converter.convert("LXXX"));
         assertEquals("90", converter.convert("XC"));
         assertEquals("100", converter.convert("C"));
-        assertEquals("201", converter.convert("CCI"));
+        assertEquals("", converter.convert(""));
     }
 
     @Test
