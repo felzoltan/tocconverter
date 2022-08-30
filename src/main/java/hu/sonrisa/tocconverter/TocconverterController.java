@@ -32,7 +32,7 @@ public class TocconverterController {
         }
     }
 
-    private class JsonTOCResult {
+    public class JsonTOCResult {
         public String errorText;
         public List<TOCItem> result;
 
