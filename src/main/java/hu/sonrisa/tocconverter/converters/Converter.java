@@ -3,6 +3,11 @@ package hu.sonrisa.tocconverter.converters;
 import java.util.HashMap;
 import java.util.Map;
 
+/***
+ * Converts arabic number to roman number or roman number to arabic.
+ * reusable, but after the first use it can be used to the
+ * same direction only as the first was
+ */
 public class Converter {
     private final Map<String, String> cache = new HashMap<>(12);
     private final ConverterFromArabicToRoman a2rConverter = new ConverterFromArabicToRoman();
