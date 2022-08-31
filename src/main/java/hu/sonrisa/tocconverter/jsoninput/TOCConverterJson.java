@@ -5,7 +5,6 @@ import hu.sonrisa.tocconverter.converters.ConverterMain;
 import java.util.List;
 
 public class TOCConverterJson {
-    private int lineNumber = 0;
     private ConverterMain converter = new ConverterMain();
 
     public void convert(List<TOCItem> input) {
