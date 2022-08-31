@@ -1,5 +1,7 @@
 package hu.sonrisa.tocconverter.converters;
 
+import org.apache.logging.log4j.util.Strings;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,13 +16,10 @@ public class ConverterMain {
     private String input;
 
     public String getConvertedValue(String p_input) {
-        if (p_input == null) {
+        if (Strings.isBlank(p_input)) {
             return "";
         }
         input = p_input.trim();
-        if (input.isBlank()) {
-            return "";
-        }
         String changeValue;
         changeValue = cache.get(input);
         if (changeValue == null) {
