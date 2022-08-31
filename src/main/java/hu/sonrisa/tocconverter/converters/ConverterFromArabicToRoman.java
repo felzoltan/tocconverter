@@ -1,6 +1,7 @@
 package hu.sonrisa.tocconverter.converters;
 
 import hu.sonrisa.tocconverter.BusinesException;
+import org.apache.logging.log4j.util.Strings;
 
 public class ConverterFromArabicToRoman implements Converter {
 
@@ -11,6 +12,9 @@ public class ConverterFromArabicToRoman implements Converter {
 
     @Override
     public String convert(String arabicNumber) {
+        if (Strings.isBlank(arabicNumber)) {
+            return "";
+        }
         splitter.setInput(arabicNumber.trim());
         char actChar = splitter.getNextChar();
         int position = 0;

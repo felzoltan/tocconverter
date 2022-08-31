@@ -1,11 +1,15 @@
 package hu.sonrisa.tocconverter.converters;
 
 import hu.sonrisa.tocconverter.BusinesException;
+import org.apache.logging.log4j.util.Strings;
 
 public class ConverterFromRomanToArabic implements Converter {
     private final InputSplitter splitter = new InputSplitter();
 
     public String convert(String romanNumber) {
+        if (Strings.isBlank(romanNumber)) {
+            return "";
+        }
         splitter.setInput(romanNumber.trim().toUpperCase());
         char actChar = splitter.getNextChar();
         int value = 0;

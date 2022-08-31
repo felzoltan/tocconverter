@@ -77,7 +77,18 @@ class ConverterMainTest {
         assertEquals("90", converter.getConvertedValue("XC"));
         assertEquals("100", converter.getConvertedValue("C"));
         assertEquals("201", converter.getConvertedValue("CCI"));
+    }
+
+    @Test
+    void getConvertedValueEmptyString() {
+        ConverterMain converter = new ConverterMain();
         assertEquals("", converter.getConvertedValue(""));
+    }
+
+    @Test
+    void getConvertedValueNullString() {
+        ConverterMain converter = new ConverterMain();
+        assertEquals("", converter.getConvertedValue(null));
     }
 
     @Test

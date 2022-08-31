@@ -32,7 +32,16 @@ class ConverterFromRomanToArabicTest {
         assertEquals("80", converter.convert("LXXX"));
         assertEquals("90", converter.convert("XC"));
         assertEquals("100", converter.convert("C"));
+    }
+
+    @Test
+    void convertEmptyString() {
         assertEquals("", converter.convert(""));
+    }
+
+    @Test
+    void convertNullString() {
+        assertEquals("", converter.convert(null));
     }
 
     @Test
